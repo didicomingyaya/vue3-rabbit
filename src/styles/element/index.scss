@@ -1,0 +1,30 @@
+@forward "element-plus/theme-chalk/src/common/var.scss" with (
+    $colors: (
+        "primary": ('base':#27ba9b),
+        "success":('base': #1dc779),
+        "warning":('base': #ffb302),
+        "danger":('base': #e26237),
+        'error': ('base':#cf4444)
+    )
+
+)
+//forward是SCSS模块系统的一部分，用于将另一个样式表的成员转发到当前样式表的作用域中。
+//转发element-plus的变量文件：将var.scss中的所有变量、混合器和函数引入当前作用域
+//覆盖颜色变量：使用with关键字修改原文件中的$colors变量值
+//自定义主题：通过修改颜色值，实现Element Plus组件的主题定制
+
+// 引入Element Plus组件样式（它们将使用您自定义的颜色）
+// @use "element-plus/theme-chalk/src/index.scss";
+
+//与@use规则的区别
+//@use：引入模块并使其在当前文件中可用
+//@forward：将模块转发，使其对导入当前文件的其他文件可用
+
+//它们经常结合使用：
+
+//scss
+// 转发并配置变量
+//@forward "module" with ($color: red);
+
+// 在当前文件中使用模块
+//@use "module";
