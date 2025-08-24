@@ -1,20 +1,12 @@
 <script setup>
 
 import { onMounted, ref} from "vue";
-import { getCategoryAPI } from "@/apis/layoutAPI.ts";
+//使用pinia中的数据
+import {useCategoryStore} from '@/stores/category'
 
-const categoryList = ref([])
 
-
-const getCategory = async () => {
-  
-  const res = await getCategoryAPI()
-  console.log('res', res);
-  categoryList.value = res.result
-
-}
-
-onMounted(() => { getCategory() })
+const categoryStore = useCategoryStore()
+onMounted(() => categoryStore.getCategory())
 //onMounted在组件挂载完毕后就执行，比main.ts里面的代码执行的更早
 // getCategoryAPI().then(res => {
 //     console.log('res', res);
@@ -32,7 +24,7 @@ onMounted(() => { getCategory() })
         <RouterLink to="/">小兔鲜</RouterLink>
       </h1>
       <ul class="app-header-nav">
-        <li class="home" v-for="item in categoryList" :key = "item.id">
+        <li class="home" v-for="item in categoryStore.categoryList" :key = "item.id">
           <RouterLink to="/">{{ item.name }}</RouterLink>
         </li>
 
