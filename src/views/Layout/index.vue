@@ -10,7 +10,7 @@ import LayoutFooter from "@/views/Layout/components/LayoutFooter.vue";
     <LayoutNav/>
     <LayoutHeader/>
 
-    <!-- <RouterView/>  -->
+    <RouterView/> 
     <!-- 二级路由 -->
      
     <LayoutFooter/>

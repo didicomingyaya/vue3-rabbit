@@ -25,7 +25,7 @@ const router = createRouter({
           path: 'category',
           name: 'Category',
           component: Category
-        }
+        },
       ]
     },
     {
@@ -36,6 +36,7 @@ const router = createRouter({
       // which is lazy-loaded when the route is visited.
       component: Login,
     },
+
   ],
 })
 
