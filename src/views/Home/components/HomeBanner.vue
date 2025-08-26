@@ -1,3 +1,45 @@
+<script setup>
+
+import {getBannerAPI} from "@/apis/homeAPI";
+import {onMounted, ref} from "vue";
+
+const bannerList=ref([])
+const getBanner=async ()=>{
+  const res = await getBannerAPI();
+  console.log(res)
+  bannerList.value=res.result
+}
+
+onMounted(()=>{
+  getBanner()
+})
+</script>
+
+
 <template>
-    <div> 我是轮播部分 </div>
+  <div class="home-banner">
+    <el-carousel height="500px">
+      <el-carousel-item v-for="item in bannerList" :key="item.id">
+        <img :src="item.imgUrl" :alt="item.hrefUrl">
+      </el-carousel-item>
+    </el-carousel>
+  </div>
 </template>
+
+
+
+<style scoped lang='scss'>
+.home-banner {
+  width: 1240px;
+  height: 500px;
+  position: absolute;
+  left: 250px;
+  top: 0px;
+  z-index: 98;
+
+  img {
+    width: 100%;
+    height: 500px;
+  }
+}
+</style>
